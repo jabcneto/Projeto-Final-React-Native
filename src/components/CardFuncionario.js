@@ -3,12 +3,12 @@ import {Image, Text, View} from 'react-native';
 
 import {Button} from 'react-native-paper';
 import api from '../api/api';
-import Funcionario from '../pages/Funcionario';
 
-export default ({id, nome, cpf, atualizou, setAtualizou, navigation}) => {
+export default ({item, navigation}) => {
+  const {id, nome, cpf} = item;
+
   return (
     <View
-      key={id}
       style={{
         justifyContent: 'center',
         alignItems: 'center',
@@ -27,11 +27,12 @@ export default ({id, nome, cpf, atualizou, setAtualizou, navigation}) => {
         <Image
           style={{width: 200, height: 200, borderRadius: 30}}
           source={{
-            uri: 'http://lorempixel.com/640/480/people',
+            uri:
+              'https://pbs.twimg.com/profile_images/1290019927131328514/daIq34Sw_400x400.jpg',
           }}
         />
         <View style={{marginVertical: 15}}>
-          <Text style={{fontSize: 25}}>Matricula: {`${id}`}</Text>
+          <Text style={{fontSize: 25}}>Matricula: {id.toString()}</Text>
           <Text style={{fontSize: 25}}>Nome: {nome}</Text>
           <Text style={{fontSize: 25}}>CPF: {cpf}</Text>
         </View>
@@ -40,11 +41,9 @@ export default ({id, nome, cpf, atualizou, setAtualizou, navigation}) => {
             mode="contained"
             onPress={() => {
               navigation.navigate('Editar', {
-                id: id,
-                nome: nome,
-                cpf: cpf,
-                setAtualizou,
-                atualizou,
+                id,
+                nome,
+                cpf,
               });
             }}
             style={{marginHorizontal: 10}}>
@@ -53,6 +52,7 @@ export default ({id, nome, cpf, atualizou, setAtualizou, navigation}) => {
           <View>
             <Button
               mode="contained"
+              color="red"
               onPress={async () =>
                 await api
                   .delete(`/funcionario/${id}`)

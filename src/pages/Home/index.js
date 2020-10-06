@@ -7,6 +7,7 @@ export default ({navigation}) => {
   return (
     <>
       <Button
+        color="blue"
         style={{
           flex: 1,
           justifyContent: 'center',
@@ -21,8 +22,8 @@ export default ({navigation}) => {
       <Button
         color="green"
         style={{
-          flex: 1,
           justifyContent: 'center',
+          flex: 1,
         }}
         mode="contained"
         onPress={() => navigation.navigate('Novo')}>

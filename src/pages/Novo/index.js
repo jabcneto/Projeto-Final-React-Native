@@ -2,11 +2,30 @@ import React, {useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import api from '../../api/api';
+import Realm from 'realm';
+import FuncionarioSchema from '../../schemas/FuncionarioSchema';
 
 export default ({navigation}) => {
   const [nome, setNome] = useState('');
   const [id, setId] = useState('');
   const [cpf, setCpf] = useState('');
+
+  const novofuncionario = async () =>
+    Realm.open({schema: [FuncionarioSchema]})
+      .then((realm) => {
+        realm.deleteAll('Funcionario');
+        realm.write(() => {
+          realm.create('Funcionario', {
+            id,
+            nome,
+            cpf,
+          });
+        });
+        realm.close();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
   return (
     <View style={{alignItems: 'center', margin: 15}}>
@@ -46,7 +65,6 @@ export default ({navigation}) => {
         <Button
           mode="contained"
           onPress={() => {
-            console.log('clicou');
             api
               .post(`/funcionario`, {id: 0, nome: nome, cpf: cpf})
               .then((res) => {
@@ -54,6 +72,7 @@ export default ({navigation}) => {
                 navigation.goBack();
               })
               .catch((e) => console.log(e));
+            novofuncionario();
           }}
           style={{marginHorizontal: 10}}>
           Salvar

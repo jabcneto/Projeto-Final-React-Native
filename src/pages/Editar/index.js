@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, View} from 'react-native';
+import {TextInput} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
 import api from '../../api/api';
 
@@ -7,8 +8,6 @@ export default ({navigation, route}) => {
   const [nome, setNome] = useState(route.params.nome);
   const [id, setId] = useState(route.params.id);
   const [cpf, setCpf] = useState(route.params.cpf);
-  const atualizou = route.params.atualizou;
-  const setAtualizou = route.params.setAtualizou;
 
   return (
     <>
@@ -51,9 +50,9 @@ export default ({navigation, route}) => {
         <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
           <Button
             mode="contained"
+            color="green"
             onPress={() => {
               api.put(`/funcionario/${id}`, {nome, cpf}).then((res) => {
-                setAtualizou(atualizou + 1);
                 navigation.goBack();
               });
             }}
