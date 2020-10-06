@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
+
 import {FlatList} from 'react-native-gesture-handler';
 
 import api from '../../api/api';
@@ -7,19 +9,20 @@ import CardFuncionario from '../../components/CardFuncionario';
 export default ({navigation}) => {
   const [funcionarios, setFuncionarios] = useState([]);
 
-  const fetchApi = async () => {
-    try {
-      const res = await api.get('/funcionario');
-      setFuncionarios(res.data);
-      console.log(res.data);
-    } catch {
-      (e) => console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    fetchApi();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchApi = async () => {
+        try {
+          const res = await api.get('/funcionario');
+          setFuncionarios(res.data);
+          console.log(res.data);
+        } catch {
+          (e) => console.log(e);
+        }
+      };
+      fetchApi();
+    }, []),
+  );
 
   return (
     <FlatList

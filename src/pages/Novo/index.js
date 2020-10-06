@@ -6,26 +6,32 @@ import Realm from 'realm';
 import FuncionarioSchema from '../../schemas/FuncionarioSchema';
 
 export default ({navigation}) => {
+  const [id, setId] = useState(0);
   const [nome, setNome] = useState('');
-  const [id, setId] = useState('');
   const [cpf, setCpf] = useState('');
 
-  const novofuncionario = async () =>
+  const novofuncionario = async () => {
+    const funcionario = api
+      .post(`/funcionario`, {nome: nome, cpf: cpf})
+      .then((res) => {
+        navigation.goBack();
+        return res.data;
+      })
+      .catch((e) => console.log(e));
+
     Realm.open({schema: [FuncionarioSchema]})
       .then((realm) => {
-        realm.deleteAll('Funcionario');
+        console.log('chegou aqui');
         realm.write(() => {
-          realm.create('Funcionario', {
-            id,
-            nome,
-            cpf,
-          });
+          realm.create('Funcionario', funcionario);
         });
+        console.log(realm.objects('Funcionario'));
         realm.close();
       })
       .catch((error) => {
         console.log(error);
       });
+  };
 
   return (
     <View style={{alignItems: 'center', margin: 15}}>
@@ -64,16 +70,7 @@ export default ({navigation}) => {
       <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
         <Button
           mode="contained"
-          onPress={() => {
-            api
-              .post(`/funcionario`, {id: 0, nome: nome, cpf: cpf})
-              .then((res) => {
-                console.log(res);
-                navigation.goBack();
-              })
-              .catch((e) => console.log(e));
-            novofuncionario();
-          }}
+          onPress={novofuncionario}
           style={{marginHorizontal: 10}}>
           Salvar
         </Button>
