@@ -38,8 +38,6 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
   return (
     <View
       style={{
-        justifyContent: 'center',
-        alignItems: 'center',
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#a8adb5',
@@ -49,7 +47,6 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
       <View
         style={{
           margin: 10,
-          justifyContent: 'center',
           alignItems: 'center',
         }}>
         <Image
@@ -59,10 +56,12 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
               'https://pbs.twimg.com/profile_images/1290019927131328514/daIq34Sw_400x400.jpg',
           }}
         />
+        <View style = {{width: '100%'}}>
         <View style={{marginVertical: 15}}>
-          <Text style={{fontSize: 25}}>Matricula: {id.toString()}</Text>
-          <Text style={{fontSize: 25}}>Nome: {nome}</Text>
-          <Text style={{fontSize: 25}}>CPF: {cpf}</Text>
+          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium', textAlign: 'left'}}>Matricula: {id.toString()}</Text>
+          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>Nome: {nome}</Text>
+          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>CPF: {cpf}</Text>
+        </View>
         </View>
         <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
           <Button

@@ -60,7 +60,7 @@ export default ({navigation}) => {
         }}
         mode="contained"
         onPress={() => navigation.navigate('Funcionarios')}>
-        <Text style={{fontSize: 40}}>
+        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium'}}>
           Gerenciar{'  '}
           <Icon name={'users'} size={40} color="#fff" />
         </Text>
@@ -73,7 +73,7 @@ export default ({navigation}) => {
         }}
         mode="contained"
         onPress={() => navigation.navigate('Novo')}>
-        <Text style={{fontSize: 40}}>
+        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium'}}>
           Novo{'  '}
           <Icon name={'user'} size={40} color="#fff" />
         </Text>
