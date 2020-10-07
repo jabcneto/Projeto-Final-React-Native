@@ -15,7 +15,9 @@ export default ({navigation}) => {
         try {
           const res = await api.get('/funcionario');
           setFuncionarios(res.data);
-          console.log(res.data);
+          Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
+            console.log(realm.objects('Funcionario'));
+          });
         } catch {
           (e) => console.log(e);
         }

@@ -1,3 +1,4 @@
+import {useFocusEffect} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Button} from 'react-native-paper';
@@ -5,50 +6,51 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '../../api/api';
 
 export default ({navigation}) => {
-  const [funcionarios, setFuncionarios] = useState([]);
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchApi = async () => {
+        try {
+          console.log('tentando');
+          const res = await api.get('/funcionario');
+          await limparRealm();
+          populaRealm(res.data);
+        } catch {
+          (e) => console.log(e);
+        }
+      };
+      fetchApi();
+    }, []),
+  );
 
-  const limparRealm = async () => {
-    Realm.open({schema: [FuncionarioSchema]})
-      .then((realm) => {
-        realm.write(() => {
-          const funcionarios = realm.objects('Funcionario');
-          realm.delete(funcionarios);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const populaFuncionarios = async () => {
-    try {
-      const res = await api.get('/funcionario');
-      setFuncionarios(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    limparRealm();
-    populaFuncionarios();
-
-    funcionarios.forEach((funcionario) => {
-      Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
+  const populaRealm = (funcionarios) => {
+    Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
+      funcionarios.forEach((funcionario) => {
         realm.write(() => {
           realm.create('Funcionario', {
             id: funcionario.id,
             nome: funcionario.nome,
             cpf: funcionario.cpf,
           });
+          console.log('populou');
         });
       });
+      realm.close();
     });
+  };
 
-    Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
-      console.log(realm.objects('Funcionario'));
-    });
-  }, []);
+  const limparRealm = async () => {
+    await Realm.open({schema: [FuncionarioSchema]})
+      .then((realm) => {
+        realm.write(() => {
+          const funcionarios = realm.objects('Funcionario');
+          realm.delete(funcionarios);
+          console.log('limpou');
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
