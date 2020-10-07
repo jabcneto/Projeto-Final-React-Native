@@ -31,7 +31,6 @@ export default ({navigation}) => {
             nome: funcionario.nome,
             cpf: funcionario.cpf,
           });
-          console.log('populou');
         });
       });
       realm.close();
@@ -44,11 +43,10 @@ export default ({navigation}) => {
         realm.write(() => {
           const funcionarios = realm.objects('Funcionario');
           realm.delete(funcionarios);
-          console.log('limpou');
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.warn(error);
       });
   };
 

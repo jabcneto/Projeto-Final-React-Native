@@ -16,10 +16,16 @@ export default ({navigation}) => {
           const res = await api.get('/funcionario');
           setFuncionarios(res.data);
           Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
-            console.log(realm.objects('Funcionario'));
+            realm.objects('Funcionario');
           });
         } catch {
-          (e) => console.log(e);
+          (e) => {
+            Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
+              console.warn(realm.objects('Funcionario'));
+              setFuncionarios(realm.objects('Funcionario'));
+            });
+            console.log(e);
+          };
         }
       };
       fetchApi();
@@ -31,7 +37,14 @@ export default ({navigation}) => {
       data={funcionarios}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({item}) => {
-        return <CardFuncionario item={item} navigation={navigation} />;
+        return (
+          <CardFuncionario
+            funcionarios={funcionarios}
+            setFuncionarios={setFuncionarios}
+            item={item}
+            navigation={navigation}
+          />
+        );
       }}
     />
   );

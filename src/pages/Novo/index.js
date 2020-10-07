@@ -6,13 +6,12 @@ import Realm from 'realm';
 import FuncionarioSchema from '../../schemas/FuncionarioSchema';
 
 export default ({navigation}) => {
-  const [id, setId] = useState(0);
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
 
   const novofuncionario = async () => {
     const funcionario = api
-      .post(`/funcionario`, {nome: nome, cpf: cpf})
+      .post(`/funcionario`, {id: 0, nome: nome, cpf: cpf})
       .then((res) => {
         navigation.goBack();
         return res.data;
@@ -21,11 +20,9 @@ export default ({navigation}) => {
 
     Realm.open({schema: [FuncionarioSchema]})
       .then((realm) => {
-        console.log('chegou aqui');
         realm.write(() => {
           realm.create('Funcionario', funcionario);
         });
-        console.log(realm.objects('Funcionario'));
         realm.close();
       })
       .catch((error) => {

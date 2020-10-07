@@ -4,8 +4,36 @@ import {Image, Text, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import api from '../api/api';
 
-export default ({item, navigation}) => {
+export default ({item, navigation, funcionarios, setFuncionarios}) => {
   const {id, nome, cpf} = item;
+
+  const populaRealm = (funcionarios) => {
+    Realm.open({schema: [FuncionarioSchema]}).then((realm) => {
+      funcionarios.forEach((funcionario) => {
+        realm.write(() => {
+          realm.create('Funcionario', {
+            id: funcionario.id,
+            nome: funcionario.nome,
+            cpf: funcionario.cpf,
+          });
+        });
+      });
+      realm.close();
+    });
+  };
+
+  const limparRealm = async () => {
+    await Realm.open({schema: [FuncionarioSchema]})
+      .then((realm) => {
+        realm.write(() => {
+          const funcionarios = realm.objects('Funcionario');
+          realm.delete(funcionarios);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <View
@@ -53,16 +81,38 @@ export default ({item, navigation}) => {
             <Button
               mode="contained"
               color="red"
-              onPress={async () =>
+              onPress={async () => {
                 await api
                   .delete(`/funcionario/${id}`)
-                  .then(
+                  .then(() => {
                     alert(
                       'Funcionario com id ' + id + ' removido com sucesso.',
-                    ),
-                  )
-                  .catch((e) => console.log(e))
-              }
+                    );
+                    setFuncionarios(
+                      funcionarios.filter((element) => {
+                        return (
+                          element !==
+                          funcionarios.find(
+                            (funcionario) => funcionario.id === id,
+                          )
+                        );
+                      }),
+                    );
+                    limparRealm();
+                    populaRealm(funcionarios);
+                    Realm.open({schema: [FuncionarioSchema]})
+                      .then((realm) => {
+                        realm.write(() => {
+                          const funcionarios = realm.objects('Funcionario');
+                          console.log(funcionarios);
+                        });
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  })
+                  .catch((e) => console.log(e));
+              }}
               style={{marginHorizontal: 10}}>
               Deletar
             </Button>
