@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Alert, Image, Text, View} from 'react-native';
 
 import {Button} from 'react-native-paper';
 import api from '../api/api';
@@ -56,12 +56,23 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
               'https://pbs.twimg.com/profile_images/1290019927131328514/daIq34Sw_400x400.jpg',
           }}
         />
-        <View style = {{width: '100%'}}>
-        <View style={{marginVertical: 15}}>
-          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium', textAlign: 'left'}}>Matricula: {id.toString()}</Text>
-          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>Nome: {nome}</Text>
-          <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>CPF: {cpf}</Text>
-        </View>
+        <View style={{width: '100%'}}>
+          <View style={{marginVertical: 15}}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontFamily: 'Poppins-Medium',
+                textAlign: 'left',
+              }}>
+              Matricula: {id.toString()}
+            </Text>
+            <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>
+              Nome: {nome}
+            </Text>
+            <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>
+              CPF: {cpf}
+            </Text>
+          </View>
         </View>
         <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
           <Button
@@ -110,7 +121,10 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
                         console.log(error);
                       });
                   })
-                  .catch((e) => console.log(e));
+                  .catch((e) => {
+                    console.log(e);
+                    Alert.alert('Sem conexão', 'Tente novamente mais tarde.');
+                  });
               }}
               style={{marginHorizontal: 10}}>
               Deletar

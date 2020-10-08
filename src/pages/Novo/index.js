@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Alert, Text, TextInput, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import api from '../../api/api';
 import Realm from 'realm';
@@ -17,7 +17,10 @@ export default ({navigation}) => {
         navigation.goBack();
         return res.data;
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        Alert.alert('Sem conexão', 'Tente novamente mais tarde.');
+      });
 
     Realm.open({schema: [FuncionarioSchema]})
       .then((realm) => {
@@ -82,15 +85,9 @@ export default ({navigation}) => {
         </View>
       </View>
 
-
       <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']}>
-<Text >
-  Sign in with Facebook
-</Text>
-</LinearGradient>
-    
+        <Text>Sign in with Facebook</Text>
+      </LinearGradient>
     </View>
-
-
   );
 };
