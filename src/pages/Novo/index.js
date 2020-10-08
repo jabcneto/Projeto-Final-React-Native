@@ -4,7 +4,6 @@ import {Button} from 'react-native-paper';
 import api from '../../api/api';
 import Realm from 'realm';
 import FuncionarioSchema from '../../schemas/FuncionarioSchema';
-import LinearGradient from 'react-native-linear-gradient';
 
 export default ({navigation}) => {
   const [nome, setNome] = useState('');
@@ -35,19 +34,22 @@ export default ({navigation}) => {
   };
 
   return (
-    <View style={{alignItems: 'center', margin: 15}}>
-      <Text style={{fontSize: 24, fontWeight: 'bold'}}>
+    <View style = {{ backgroundColor: '#FCA311', flex: 1}}>
+    <View style={{alignItems: 'center', margin: 15 }}>
+      <Text style={{fontSize: 24, fontWeight: 'bold', fontFamily: 'Patua One', color: '#14213D'}}>
         Dados do novo funcionario
       </Text>
 
       <View style={{width: '80%', marginVertical: 15}}>
-        <Text style={{fontSize: 20}}>Nome</Text>
+        <Text style={{fontSize: 20, color: '#14213D', fontFamily:"Patua One"}}>Nome</Text>
         <TextInput
           style={{
             borderBottomWidth: 1,
             fontSize: 18,
             textAlignVertical: 'center',
             padding: 0,
+            borderBottomColor: '#14213D', 
+           
           }}
           onChangeText={(nome) => setNome(nome)}
           editable
@@ -55,13 +57,14 @@ export default ({navigation}) => {
         />
       </View>
       <View style={{width: '80%', marginVertical: 15}}>
-        <Text style={{fontSize: 20}}>CPF</Text>
+        <Text style={{fontSize: 20, color: '#14213D', fontFamily:"Patua One"}}>CPF</Text>
         <TextInput
           style={{
             borderBottomWidth: 1,
             fontSize: 18,
             textAlignVertical: 'center',
             padding: 0,
+            borderBottomColor: '#14213D',
           }}
           onChangeText={(cpf) => setCpf(cpf)}
           editable
@@ -72,22 +75,19 @@ export default ({navigation}) => {
         <Button
           mode="contained"
           onPress={novofuncionario}
-          style={{marginHorizontal: 10}}>
-          Salvar
+          style={{marginHorizontal: 10, backgroundColor: '#14213D'}}>
+          <Text style={{color: '#FCA311', fontFamily: 'Patua One'}}>Salvar</Text>
         </Button>
         <View>
           <Button
             mode="contained"
             onPress={() => navigation.goBack()}
-            style={{marginHorizontal: 10}}>
-            Cancelar
+            style={{marginHorizontal: 10, backgroundColor: '#14213D' }}>
+           <Text style={{color: '#FCA311', fontFamily: 'Patua One'}}>Cancelar</Text>
           </Button>
         </View>
-      </View>
-
-      <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']}>
-        <Text>Sign in with Facebook</Text>
-      </LinearGradient>
+      </View>      
+    </View>
     </View>
   );
 };
