@@ -104,7 +104,6 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
                       .then((realm) => {
                         realm.write(() => {
                           const funcionarios = realm.objects('Funcionario');
-                          console.log(funcionarios);
                         });
                       })
                       .catch((error) => {
