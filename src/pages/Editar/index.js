@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Alert, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
 import api from '../../api/api';
@@ -52,9 +52,15 @@ export default ({navigation, route}) => {
             mode="contained"
             color="green"
             onPress={() => {
-              api.put(`/funcionario/${id}`, {nome, cpf}).then((res) => {
-                navigation.goBack();
-              });
+              api
+                .put(`/funcionario/${id}`, {nome, cpf})
+                .then((res) => {
+                  navigation.goBack();
+                })
+                .catch((e) => {
+                  console.log(e);
+                  Alert.alert('Sem conexão', 'Tente novamente mais tarde.');
+                });
             }}
             style={{marginHorizontal: 10}}>
             Salvar

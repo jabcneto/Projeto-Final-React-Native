@@ -10,7 +10,6 @@ export default ({navigation}) => {
     React.useCallback(() => {
       const fetchApi = async () => {
         try {
-          console.log('tentando');
           const res = await api.get('/funcionario');
           await limparRealm();
           populaRealm(res.data);
@@ -46,7 +45,7 @@ export default ({navigation}) => {
         });
       })
       .catch((error) => {
-        console.warn(error);
+        console.log(error);
       });
   };
 
