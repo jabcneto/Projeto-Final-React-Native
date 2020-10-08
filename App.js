@@ -16,6 +16,7 @@ function App() {
       <LottieView
         source={require('./src/assets/splash_screen/inicial.json')}
         autoPlay
+        speed={0.8}
         loop={false}
         onAnimationFinish={splash}
       />

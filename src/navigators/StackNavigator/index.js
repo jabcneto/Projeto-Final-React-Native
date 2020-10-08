@@ -15,8 +15,34 @@ export default () => {
         component={Home}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Funcionarios" component={Funcionario} />
-      <Stack.Screen name="Editar" component={Editar} />
+      <Stack.Screen
+        name="Funcionarios"
+        component={Funcionario}
+        options={{
+          headerTintColor: '#FCA311',
+          headerTitleStyle: {
+            color: '#FCA311',
+          },
+          headerStyle: {
+            backgroundColor: '#14213D',
+            borderBottomColor: '#FCA311',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Editar"
+        component={Editar}
+        options={{
+          headerTintColor: '#FCA311',
+          headerTitleStyle: {
+            color: '#FCA311',
+          },
+          headerStyle: {
+            backgroundColor: '#14213D',
+            borderBottomColor: '#FCA311',
+          },
+        }}
+      />
       <Stack.Screen name="Novo" component={Novo} />
     </Stack.Navigator>
   );

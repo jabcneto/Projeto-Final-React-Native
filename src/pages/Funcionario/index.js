@@ -33,6 +33,7 @@ export default ({navigation}) => {
 
   return (
     <FlatList
+      style={{backgroundColor: '#14213D'}}
       data={funcionarios}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({item}) => {

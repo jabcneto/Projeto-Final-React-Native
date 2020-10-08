@@ -10,21 +10,25 @@ export default ({navigation, route}) => {
   const [cpf, setCpf] = useState(route.params.cpf);
 
   return (
-    <>
+    <View style={{backgroundColor: '#14213D', height: '100%'}}>
       <View
         style={{alignItems: 'center', justifyContent: 'center', margin: 15}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+        <Text style={{color: '#E5E5E5', fontSize: 20, fontWeight: 'bold'}}>
           Atualizando os dados do funcionario {id}
         </Text>
 
         <View style={{width: '80%', marginVertical: 15}}>
-          <Text style={{fontSize: 20}}>Nome</Text>
+          <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
+            Nome
+          </Text>
           <TextInput
             style={{
               borderBottomWidth: 1,
               fontSize: 18,
               textAlignVertical: 'center',
               padding: 0,
+              color: '#E5E5E5',
+              borderBottomColor: '#FCA311',
             }}
             onChangeText={(nome) => setNome(nome)}
             defaultValue={nome}
@@ -33,13 +37,15 @@ export default ({navigation, route}) => {
           />
         </View>
         <View style={{width: '80%', marginVertical: 15}}>
-          <Text style={{fontSize: 20}}>CPF</Text>
+          <Text style={{color: '#E5E5E5', fontSize: 20}}>CPF</Text>
           <TextInput
             style={{
               borderBottomWidth: 1,
               fontSize: 18,
               textAlignVertical: 'center',
               padding: 0,
+              color: '#E5E5E5',
+              borderBottomColor: '#FCA311',
             }}
             onChangeText={(cpf) => setCpf(cpf)}
             defaultValue={cpf}
@@ -75,6 +81,6 @@ export default ({navigation, route}) => {
           </View>
         </View>
       </View>
-    </>
+    </View>
   );
 };
