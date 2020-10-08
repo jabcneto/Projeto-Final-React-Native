@@ -62,7 +62,6 @@ export default ({navigation}) => {
         <Text
           style={{
             fontSize: 40,
-            fontFamily: 'Poppins-Medium',
             color: '#FCA311',
           }}>
           Gerenciar{'  '}
@@ -80,7 +79,6 @@ export default ({navigation}) => {
         <Text
           style={{
             fontSize: 40,
-            fontFamily: 'Poppins-Medium',
             color: '#14213D',
           }}>
           Novo{'  '}

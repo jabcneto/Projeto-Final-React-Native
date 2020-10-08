@@ -42,7 +42,7 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
         borderWidth: 1,
         borderColor: '#a8adb5',
         margin: 10,
-        backgroundColor: '#fefefe',
+        backgroundColor: '#E5E5E5',
       }}>
       <View
         style={{
@@ -61,17 +61,12 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
             <Text
               style={{
                 fontSize: 20,
-                fontFamily: 'Poppins-Medium',
                 textAlign: 'left',
               }}>
               Matricula: {id.toString()}
             </Text>
-            <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>
-              Nome: {nome}
-            </Text>
-            <Text style={{fontSize: 20, fontFamily: 'Poppins-Medium'}}>
-              CPF: {cpf}
-            </Text>
+            <Text style={{fontSize: 20}}>Nome: {nome}</Text>
+            <Text style={{fontSize: 20}}>CPF: {cpf}</Text>
           </View>
         </View>
         <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
@@ -84,8 +79,8 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
                 cpf,
               });
             }}
-            style={{marginHorizontal: 10}}>
-            Editar
+            style={{marginHorizontal: 10, backgroundColor: '#14213D'}}>
+            <Text style={{color: '#FCA311'}}>Editar</Text>
           </Button>
           <View>
             <Button
@@ -126,8 +121,8 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
                     Alert.alert('Sem conexão', 'Tente novamente mais tarde.');
                   });
               }}
-              style={{marginHorizontal: 10}}>
-              Deletar
+              style={{marginHorizontal: 10, backgroundColor: '#FCA311'}}>
+              <Text style={{color: '#14213D'}}>Deletar</Text>
             </Button>
           </View>
         </View>

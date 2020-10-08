@@ -18,9 +18,7 @@ export default ({navigation, route}) => {
         </Text>
 
         <View style={{width: '80%', marginVertical: 15}}>
-          <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
-            Nome
-          </Text>
+          <Text style={{color: '#FCA311', fontSize: 20}}>Nome</Text>
           <TextInput
             style={{
               borderBottomWidth: 1,
@@ -37,7 +35,11 @@ export default ({navigation, route}) => {
           />
         </View>
         <View style={{width: '80%', marginVertical: 15}}>
-          <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              color: '#FCA311',
+              fontSize: 20,
+            }}>
             CPF
           </Text>
           <TextInput
@@ -58,7 +60,6 @@ export default ({navigation, route}) => {
         <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
           <Button
             mode="contained"
-            color="green"
             onPress={() => {
               api
                 .put(`/funcionario/${id}`, {nome, cpf})
@@ -70,14 +71,17 @@ export default ({navigation, route}) => {
                   Alert.alert('Sem conexão', 'Tente novamente mais tarde.');
                 });
             }}
-            style={{marginHorizontal: 10}}>
-            Salvar
+            style={{marginHorizontal: 10}}
+            color="#FCA311">
+            <Text style={{color: '#14213D'}}>Salvar</Text>
           </Button>
           <View>
             <Button
+              mode="contained"
               onPress={() => navigation.goBack()}
-              style={{color: '#FCA311', marginHorizontal: 10}}>
-              <Text style={{color: '#FCA311'}}>Cancelar</Text>
+              color={'#FCA311'}
+              style={{marginHorizontal: 10}}>
+              <Text style={{color: '#14213D'}}>Cancelar</Text>
             </Button>
           </View>
         </View>
