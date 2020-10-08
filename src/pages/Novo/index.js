@@ -4,6 +4,7 @@ import {Button} from 'react-native-paper';
 import api from '../../api/api';
 import Realm from 'realm';
 import FuncionarioSchema from '../../schemas/FuncionarioSchema';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default ({navigation}) => {
   const [nome, setNome] = useState('');
@@ -80,6 +81,16 @@ export default ({navigation}) => {
           </Button>
         </View>
       </View>
+
+
+      <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']}>
+<Text >
+  Sign in with Facebook
+</Text>
+</LinearGradient>
+    
     </View>
+
+
   );
 };
