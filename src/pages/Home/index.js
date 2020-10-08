@@ -1,6 +1,7 @@
 import {useFocusEffect} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '../../api/api';
@@ -51,40 +52,50 @@ export default ({navigation}) => {
 
   return (
     <>
-      <Button
-        color="#14213D"
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-        }}
-        mode="contained"
-        onPress={() => navigation.navigate('Funcionários')}>
-        <Text
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <TouchableHighlight
           style={{
-            fontSize: 40,
-            color: '#FCA311',
-          }}>
-          Gerenciar{'  '}
-          <Icon name={'users'} size={40} color="#FCA311" />
-        </Text>
-      </Button>
-      <Button
-        color="#FCA311"
-        style={{
-          justifyContent: 'center',
-          flex: 1,
-        }}
-        mode="contained"
-        onPress={() => navigation.navigate('Novo')}>
-        <Text
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#14213D',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => navigation.navigate('Funcionários')}>
+          <Text
+            style={{
+              fontSize: 40,
+              color: '#FCA311',
+              fontWeight: 'bold',
+            }}>
+            GERENCIAR{'  '}
+            <Icon name={'users'} size={40} color="#FCA311" />
+          </Text>
+        </TouchableHighlight>
+      </View>
+
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <TouchableHighlight
+          underlayColor="#E5E5E5"
           style={{
-            fontSize: 40,
-            color: '#14213D',
-          }}>
-          Novo{'  '}
-          <Icon name={'user'} size={40} color="#14213D" />
-        </Text>
-      </Button>
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#FCA311',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => navigation.navigate('Novo')}>
+          <Text
+            style={{
+              fontSize: 40,
+              color: '#14213D',
+              fontWeight: 'bold',
+            }}>
+            NOVO{'  '}
+            <Icon name={'user'} size={40} color="#14213D" />
+          </Text>
+        </TouchableHighlight>
+      </View>
     </>
   );
 };
