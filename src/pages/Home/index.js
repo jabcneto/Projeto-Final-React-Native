@@ -53,29 +53,29 @@ export default ({navigation}) => {
   return (
     <>
       <Button
-        color="blue"
+        color="#14213D"
         style={{
           flex: 1,
           justifyContent: 'center',
         }}
         mode="contained"
         onPress={() => navigation.navigate('Funcionarios')}>
-        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium'}}>
+        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium', color: '#FCA311'}}>
           Gerenciar{'  '}
-          <Icon name={'users'} size={40} color="#fff" />
+          <Icon name={'users'} size={40} color="#FCA311" />
         </Text>
       </Button>
       <Button
-        color="green"
+        color="#FCA311"
         style={{
           justifyContent: 'center',
           flex: 1,
         }}
         mode="contained"
         onPress={() => navigation.navigate('Novo')}>
-        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium'}}>
+        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium', color: '#14213D'}}>
           Novo{'  '}
-          <Icon name={'user'} size={40} color="#fff" />
+          <Icon name={'user'} size={40} color="#14213D" />
         </Text>
       </Button>
     </>
