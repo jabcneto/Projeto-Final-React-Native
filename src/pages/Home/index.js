@@ -58,8 +58,13 @@ export default ({navigation}) => {
           justifyContent: 'center',
         }}
         mode="contained"
-        onPress={() => navigation.navigate('Funcionarios')}>
-        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium', color: '#FCA311'}}>
+        onPress={() => navigation.navigate('Funcionários')}>
+        <Text
+          style={{
+            fontSize: 40,
+            fontFamily: 'Poppins-Medium',
+            color: '#FCA311',
+          }}>
           Gerenciar{'  '}
           <Icon name={'users'} size={40} color="#FCA311" />
         </Text>
@@ -72,7 +77,12 @@ export default ({navigation}) => {
         }}
         mode="contained"
         onPress={() => navigation.navigate('Novo')}>
-        <Text style={{fontSize: 40, fontFamily: 'Poppins-Medium', color: '#14213D'}}>
+        <Text
+          style={{
+            fontSize: 40,
+            fontFamily: 'Poppins-Medium',
+            color: '#14213D',
+          }}>
           Novo{'  '}
           <Icon name={'user'} size={40} color="#14213D" />
         </Text>

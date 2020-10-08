@@ -16,7 +16,7 @@ export default () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Funcionarios"
+        name="Funcionários"
         component={Funcionario}
         options={{
           headerTintColor: '#FCA311',
@@ -43,7 +43,20 @@ export default () => {
           },
         }}
       />
-      <Stack.Screen name="Novo" component={Novo} />
+      <Stack.Screen
+        name="Novo"
+        component={Novo}
+        options={{
+          headerTintColor: '#FCA311',
+          headerTitleStyle: {
+            color: '#FCA311',
+          },
+          headerStyle: {
+            backgroundColor: '#14213D',
+            borderBottomColor: '#FCA311',
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };

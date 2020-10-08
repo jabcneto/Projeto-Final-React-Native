@@ -13,7 +13,7 @@ export default ({navigation, route}) => {
     <View style={{backgroundColor: '#14213D', height: '100%'}}>
       <View
         style={{alignItems: 'center', justifyContent: 'center', margin: 15}}>
-        <Text style={{color: '#E5E5E5', fontSize: 20, fontWeight: 'bold'}}>
+        <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
           Atualizando os dados do funcionario {id}
         </Text>
 
@@ -37,7 +37,9 @@ export default ({navigation, route}) => {
           />
         </View>
         <View style={{width: '80%', marginVertical: 15}}>
-          <Text style={{color: '#E5E5E5', fontSize: 20}}>CPF</Text>
+          <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
+            CPF
+          </Text>
           <TextInput
             style={{
               borderBottomWidth: 1,
@@ -73,10 +75,9 @@ export default ({navigation, route}) => {
           </Button>
           <View>
             <Button
-              mode="contained"
               onPress={() => navigation.goBack()}
-              style={{marginHorizontal: 10}}>
-              Cancelar
+              style={{color: '#FCA311', marginHorizontal: 10}}>
+              <Text style={{color: '#FCA311'}}>Cancelar</Text>
             </Button>
           </View>
         </View>
