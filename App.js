@@ -14,9 +14,10 @@ function App() {
   if (!isReady) {
     return (
       <LottieView
+        style={{backgroundColor: '#14213D'}}
         source={require('./src/assets/splash_screen/inicial.json')}
         autoPlay
-        speed={0.8}
+        speed={0.7}
         loop={false}
         onAnimationFinish={splash}
       />

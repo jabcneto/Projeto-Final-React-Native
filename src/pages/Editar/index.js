@@ -14,7 +14,7 @@ export default ({navigation, route}) => {
       <View
         style={{alignItems: 'center', justifyContent: 'center', margin: 15}}>
         <Text style={{color: '#FCA311', fontSize: 20, fontWeight: 'bold'}}>
-          Atualizando os dados do funcionario {id}
+          Atualizando os dados do funcionário {id}
         </Text>
 
         <View style={{width: '80%', marginVertical: 15}}>

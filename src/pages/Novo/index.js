@@ -13,6 +13,7 @@ export default ({navigation}) => {
     const funcionario = api
       .post(`/funcionario`, {id: 0, nome: nome, cpf: cpf})
       .then((res) => {
+        Alert.alert('Cadastrado com sucesso!', 'Muito bom XD');
         navigation.goBack();
         return res.data;
       })
@@ -37,7 +38,7 @@ export default ({navigation}) => {
     <View style={{backgroundColor: '#FCA311', flex: 1}}>
       <View style={{alignItems: 'center', margin: 15}}>
         <Text style={{fontSize: 24, fontWeight: 'bold', color: '#14213D'}}>
-          Dados do novo funcionario
+          Dados do novo funcionário
         </Text>
 
         <View style={{width: '80%', marginVertical: 15}}>

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Alert, Image, Text, View} from 'react-native';
 
 import {Button} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '../api/api';
 
 export default ({item, navigation, funcionarios, setFuncionarios}) => {
@@ -49,13 +50,7 @@ export default ({item, navigation, funcionarios, setFuncionarios}) => {
           margin: 10,
           alignItems: 'center',
         }}>
-        <Image
-          style={{width: 200, height: 200, borderRadius: 30}}
-          source={{
-            uri:
-              'https://pbs.twimg.com/profile_images/1290019927131328514/daIq34Sw_400x400.jpg',
-          }}
-        />
+        <Icon name={'user'} size={200} color="#14213D" />
         <View style={{width: '100%'}}>
           <View style={{marginVertical: 15}}>
             <Text
